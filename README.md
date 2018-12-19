@@ -1,10 +1,10 @@
 # cbc-msys2
 MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 
-`download-prerequisites.sh`: Download CBC 2.9.9, swigwin, jCbc and conda-forge OpenBLAS binaries
-`inflate-prerequisites.sh`: Extract prerequisites to separate folder
-`compile-cbc.sh`: Compile CBC with or without OpenBLAS, in shared or static form. The former will produce DLLs
-`compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a static CBC
+- `download-prerequisites.sh`: Download CBC 2.9.9, swigwin, jCbc and conda-forge OpenBLAS binaries
+- `inflate-prerequisites.sh`: Extract prerequisites to separate folder
+- `compile-cbc.sh`: Compile CBC with or without OpenBLAS, in shared or static form. The former will produce DLLs
+- `compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a static CBC
 
 By default, OpenBLAS binaries from conda-forge are used, though a self-compiled OpenBLAS can be used as well (recommended).
 
