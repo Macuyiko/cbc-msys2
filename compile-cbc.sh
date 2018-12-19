@@ -33,7 +33,7 @@ case $i in
     --openblas-lib=*)
     OPENBLAS_LIB_PATH="${i#*=}"
     ;;
-	--openblas-inc=*)
+    --openblas-inc=*)
     OPENBLAS_INC_PATH="${i#*=}"
     ;;
     --shared)
