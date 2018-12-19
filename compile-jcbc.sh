@@ -28,19 +28,19 @@ case $i in
     --package=*)
     PACKAGE="${i#*=}"
     ;;
-	--openblas)
+    --openblas)
     OPENBLAS=1
     ;;
     --openblas-lib=*)
     OPENBLAS_LIB_PATH="${i#*=}"
     ;;
-	--openblas-inc=*)
+    --openblas-inc=*)
     OPENBLAS_INC_PATH="${i#*=}"
     ;;
-	--coin-path=*)
+    --coin-path=*)
     COIN_PATH="${i#*=}"
     ;;
-	--java-path=*)
+    --java-path=*)
     JAVA_PATH="${i#*=}"
     ;;
     *)
