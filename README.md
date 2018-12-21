@@ -8,6 +8,12 @@ MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 
 By default, OpenBLAS binaries from conda-forge are used, though a self-compiled OpenBLAS can be used as well (recommended).
 
+Make sure compiler tools are installed:
+
+    pacman -S --needed \
+      base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake unzip
+
+
 More information:
 
 - https://github.com/xianyi/OpenBLAS/wiki/Installation-Guide: OpenBLAS installation guide. MSYS2 users will need to modify a makefile to workaround a bug, see https://github.com/xianyi/OpenBLAS/wiki/How-to-use-OpenBLAS-in-Microsoft-Visual-Studio#2-gnu-mingw-abi
