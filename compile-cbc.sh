@@ -21,6 +21,7 @@ cp -R $CBCORIGPATH $CBCCOPYPATH
 OPENBLAS=0
 SHARED=0
 THREADSAFE=0
+PARALLEL=1
 OPENBLAS_LIB_PATH=$SRCDIR/Library/lib
 OPENBLAS_INC_PATH=$SRCDIR/Library/include/openblas
 
@@ -38,6 +39,9 @@ case $i in
     ;;
     --shared)
     SHARED=1
+    ;;
+    --nopar)
+    PARALLEL=0
     ;;
     --threadsafe)
     THREADSAFE=1
@@ -77,9 +81,14 @@ cd ${CBCCOPYPATH}/ThirdParty/Lapack
 fi
 
 CONFIGURATION=$'./configure \
-  --prefix='"${CBCBUILDDIR}"' \
+  --prefix='"${CBCBUILDDIR}"' \'
+
+if [ $PARALLEL == 1 ] 
+then
+	CONFIGURATION=$"${CONFIGURATION}"'
   --enable-cbc-parallel \'
-  
+fi
+
 if [ $SHARED == 1 ] 
 then
 	CONFIGURATION=$"${CONFIGURATION}"'
