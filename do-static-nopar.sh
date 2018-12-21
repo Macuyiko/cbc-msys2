@@ -8,8 +8,8 @@ DOWNLOADDIR=$1
 SRCDIR=$2
 BUILDDIR=$3
 
+echo 'This compiles CBC stable without parallel support or OpenBLAS'
 echo 'To change prerequisites version, modify download-prerequisites script'
-echo 'To change OpenBLAS version (coin, conda binary or self-compiled), modify this script'
 read -n1 -r -p "Press any key to continue..." key
 
 echo 

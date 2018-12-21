@@ -11,9 +11,14 @@ BUILDDIR=$3
 OPENBLAS_LIB=$HOME/openblasbuild/lib
 OPENBLAS_INC=$HOME/openblasbuild/include
 
+echo 'This compiles CBC-trunk with self-compiled OpenBLAS'
 echo 'To change prerequisites version, modify download-prerequisites script'
-echo 'To change OpenBLAS version (coin, conda binary or self-compiled), modify this script'
+echo 'To change OpenBLAS version (coin, conda binary or self-compiled) or CBC version, modify this script'
 read -n1 -r -p "Press any key to continue..." key
+
+echo 
+echo Downloading and compiling OpenBLAS...
+./compile-openblas.sh
 
 echo 
 echo Downloading prerequisites...
@@ -22,6 +27,10 @@ echo Downloading prerequisites...
 echo 
 echo Inflating prerequisites...
 ./inflate-prerequisites.sh ${DOWNLOADDIR} ${SRCDIR}
+
+echo 
+echo Downloading CBC-trunk...
+./download-cbc-trunk.sh ${DOWNLOADDIR} ${SRCDIR}
 
 echo 
 echo Building static CBC...
@@ -35,13 +44,15 @@ rm -R ${HOME}/${BUILDDIR}/deployment
 mkdir ${HOME}/${BUILDDIR}/deployment
 
 cp -R ${HOME}/${BUILDDIR}/jcbcbuild/* ${HOME}/${BUILDDIR}/deployment/
-cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/*.exe ${HOME}/${BUILDDIR}/deployment/
+cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/*.exe ${HOME}/${BUILDDIR}/deployment/*-static.exe
 
 echo 
 echo Building shared CBC...
 ./compile-cbc.sh src build --threadsafe --shared --openblas --openblas-lib=${OPENBLAS_LIB} --openblas-inc=${OPENBLAS_INC}
 
-cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/*.dll ${HOME}/${BUILDDIR}/deployment/
+cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${HOME}/${BUILDDIR}/deployment/
+
+cp -R ${OPENBLAS_LIB}/../bin/* ${HOME}/${BUILDDIR}/deployment/
 
 echo 
 echo Done, here is the cygcheck output:

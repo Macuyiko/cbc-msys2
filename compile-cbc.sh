@@ -103,8 +103,8 @@ then
 	CONFIGURATION=$"${CONFIGURATION}"'
   --with-blas-lib="-L'"${OPENBLAS_LIB_PATH}"' -lopenblas" \
   --with-lapack-lib="-L'"${OPENBLAS_LIB_PATH}"' -lopenblas" \
-  --with-blas-incdir="${OPENBLAS_INC_PATH}" \
-  --with-lapack-incdir="${OPENBLAS_INC_PATH}" \'
+  --with-blas-incdir="'"${OPENBLAS_INC_PATH}"'" \
+  --with-lapack-incdir="'"${OPENBLAS_INC_PATH}"'" \'
 fi
 
 if [ $THREADSAFE == 1 ] 
