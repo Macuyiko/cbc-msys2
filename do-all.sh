@@ -43,16 +43,16 @@ echo Building jCBC...
 rm -R ${HOME}/${BUILDDIR}/deployment
 mkdir ${HOME}/${BUILDDIR}/deployment
 
-cp -R ${HOME}/${BUILDDIR}/jcbcbuild/* ${HOME}/${BUILDDIR}/deployment/
-cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/*.exe ${HOME}/${BUILDDIR}/deployment/*-static.exe
+cp ${HOME}/${BUILDDIR}/jcbcbuild/* ${HOME}/${BUILDDIR}/deployment/
+cp ${HOME}/${BUILDDIR}/cbcbuild/bin/cbc.exe ${HOME}/${BUILDDIR}/deployment/cbc-static.exe
+cp ${HOME}/${BUILDDIR}/cbcbuild/bin/clp.exe ${HOME}/${BUILDDIR}/deployment/clp-static.exe
 
 echo 
 echo Building shared CBC...
 ./compile-cbc.sh src build --threadsafe --shared --openblas --openblas-lib=${OPENBLAS_LIB} --openblas-inc=${OPENBLAS_INC}
 
-cp -R ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${HOME}/${BUILDDIR}/deployment/
-
-cp -R ${OPENBLAS_LIB}/../bin/* ${HOME}/${BUILDDIR}/deployment/
+cp ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${HOME}/${BUILDDIR}/deployment/
+cp ${OPENBLAS_LIB}/../bin/* ${HOME}/${BUILDDIR}/deployment/
 
 echo 
 echo Done, here is the cygcheck output:

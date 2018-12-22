@@ -8,11 +8,11 @@
 #define OPENBLAS_BUNDERSCORE _
 #define OPENBLAS_NEEDBUNDERSCORE 1
 #define OPENBLAS_HASWELL 
-#define OPENBLAS_L1_CODE_SIZE 16384
-#define OPENBLAS_L1_CODE_ASSOCIATIVE 4
+#define OPENBLAS_L1_CODE_SIZE 32768
+#define OPENBLAS_L1_CODE_ASSOCIATIVE 8
 #define OPENBLAS_L1_CODE_LINESIZE 64
-#define OPENBLAS_L1_DATA_SIZE 8192
-#define OPENBLAS_L1_DATA_ASSOCIATIVE 4
+#define OPENBLAS_L1_DATA_SIZE 32768
+#define OPENBLAS_L1_DATA_ASSOCIATIVE 8
 #define OPENBLAS_L1_DATA_LINESIZE 64
 #define OPENBLAS_L2_SIZE 262144
 #define OPENBLAS_L2_ASSOCIATIVE 8
@@ -32,9 +32,10 @@
 #define OPENBLAS_HAVE_SSE4_1 
 #define OPENBLAS_HAVE_SSE4_2 
 #define OPENBLAS_HAVE_AVX 
+#define OPENBLAS_HAVE_FMA3 
 #define OPENBLAS_HAVE_CFLUSH 
 #define OPENBLAS_NUM_SHAREDCACHE 1
-#define OPENBLAS_NUM_CORES 2
+#define OPENBLAS_NUM_CORES 1
 #define OPENBLAS_CORE_HASWELL 
 #define OPENBLAS_CHAR_CORENAME "HASWELL"
 #define OPENBLAS_SLOCAL_BUFFER_SIZE 24576
@@ -42,7 +43,7 @@
 #define OPENBLAS_CLOCAL_BUFFER_SIZE 12288
 #define OPENBLAS_ZLOCAL_BUFFER_SIZE 8192
 #define OPENBLAS_GEMM_MULTITHREAD_THRESHOLD 4
-#define OPENBLAS_VERSION " OpenBLAS 0.2.20 "
+#define OPENBLAS_VERSION " OpenBLAS 0.3.4 "
 /*This is only for "make install" target.*/
 
 #if defined(OPENBLAS_OS_WINNT) || defined(OPENBLAS_OS_CYGWIN_NT) || defined(OPENBLAS_OS_INTERIX)
@@ -104,7 +105,7 @@ typedef int blasint;
    extension since version 3.0.  If neither are available, use a compatible
    structure as fallback (see Clause 6.2.5.13 of the C99 standard). */
 #if ((defined(__STDC_IEC_559_COMPLEX__) || __STDC_VERSION__ >= 199901L || \
-      (__GNUC__ >= 3 && !defined(__cplusplus))) && !(defined(FORCE_OPENBLAS_COMPLEX_STRUCT)))
+      (__GNUC__ >= 3 && !defined(__cplusplus))) && !(defined(FORCE_OPENBLAS_COMPLEX_STRUCT))) && !defined(_MSC_VER)
   #define OPENBLAS_COMPLEX_C99
 #ifndef __cplusplus
   #include <complex.h>
