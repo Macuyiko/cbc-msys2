@@ -58,4 +58,4 @@ echo
 echo Done, here is the cygcheck output:
 cygcheck ${HOME}/${BUILDDIR}/deployment/cbc.exe
 
-echo Make sure to make necessary DLLs to deployment directory
+echo Make sure to move the necessary DLLs to deployment directory
