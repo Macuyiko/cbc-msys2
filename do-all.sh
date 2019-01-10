@@ -11,7 +11,7 @@ BUILDDIR=$3
 OPENBLAS_LIB=$HOME/openblasbuild/lib
 OPENBLAS_INC=$HOME/openblasbuild/include
 
-echo 'This compiles CBC-trunk with self-compiled OpenBLAS'
+echo 'This compiles CBC-2.9.9 with self-compiled OpenBLAS'
 echo 'To change prerequisites version, modify download-prerequisites script'
 echo 'To change OpenBLAS version (coin, conda binary or self-compiled) or CBC version, modify this script'
 read -n1 -r -p "Press any key to continue..." key
@@ -28,9 +28,10 @@ echo
 echo Inflating prerequisites...
 ./inflate-prerequisites.sh ${DOWNLOADDIR} ${SRCDIR}
 
-echo 
-echo Downloading CBC-trunk...
-./download-cbc-trunk.sh ${DOWNLOADDIR} ${SRCDIR}
+# Uncomment this if you want CBC-trunk instead
+# echo 
+# echo Downloading CBC-trunk...
+# ./download-cbc-trunk.sh ${DOWNLOADDIR} ${SRCDIR}
 
 echo 
 echo Building static CBC...
