@@ -3,12 +3,12 @@ MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 
 1. `download-prerequisites.sh`: Download CBC 2.9.9, swigwin, jCbc and conda-forge OpenBLAS binaries
 2. `inflate-prerequisites.sh`: Extract prerequisites to separate folder
-3. `download-cbc-trunk.sh`: Download CBC SVN trunk using Svnkit
+3. `download-cbc-trunk.sh`: Download CBC SVN trunk using Svnkit, will replace inflated CBC
 4. `compile-openblas`: Download and compile OpenBLAS
 5. `compile-cbc.sh`: Compile CBC with or without OpenBLAS, in shared or static form. The former will produce DLLs
-6. `compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a static CBC
+6. `compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a statically compiled CBC
 
-`do-all.sh download src build` can be used to download all prerequisites, inflate them, download CBC trunk, download and compile OpenBLAS, compile CBC statically, compile jCBC, compile CBC shared libraries. Assumes a Java 7 JDK present.
+`do-all.sh download src build` can be used to download all prerequisites, inflate them, download and compile OpenBLAS, compile CBC statically, compile jCBC, compile CBC shared libraries. Assumes a Java 7 JDK present.
 
 Make sure compiler tools are installed:
 
