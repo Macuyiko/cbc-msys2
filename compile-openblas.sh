@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wget https://github.com/xianyi/OpenBLAS/archive/v0.3.4.zip -O $HOME/openblas-src.zip
+wget https://github.com/xianyi/OpenBLAS/archive/v0.3.5.zip -O $HOME/openblas-src.zip
 unzip $HOME/openblas-src.zip -d $HOME
 rm $HOME/openblas-src.zip
 
