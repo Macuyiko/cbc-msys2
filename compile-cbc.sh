@@ -6,28 +6,32 @@
 SRCDIR=$HOME/$1
 BUILDDIR=$HOME/$2
 
+CBCCOPYPATH=$BUILDDIR/cbcsrc
 CBCBUILDDIR=$BUILDDIR/cbcbuild
 CBCORIGPATH=$SRCDIR/Cbc-*
-CBCCOPYPATH=$BUILDDIR/cbcsrc
 
-echo 
-echo Setting up build directory
 mkdir $BUILDDIR
+rm -R $CBCCOPYPATH
 rm -R $CBCBUILDDIR
 mkdir $CBCBUILDDIR
-rm -R $CBCCOPYPATH
-cp -R $CBCORIGPATH $CBCCOPYPATH
 
+THIRTYTWOBIT=0
 OPENBLAS=0
 SHARED=0
 THREADSAFE=0
 PARALLEL=1
-OPENBLAS_LIB_PATH=$SRCDIR/Library/lib
-OPENBLAS_INC_PATH=$SRCDIR/Library/include/openblas
+OPENBLAS_LIB_PATH=$BUILDDIR/openblasbuild/lib
+OPENBLAS_INC_PATH=$BUILDDIR/openblasbuild/include
 
 for i in "$@"
 do
 case $i in
+	--32)
+    THIRTYTWOBIT=1
+    ;;
+    --use-trunk)
+    CBCORIGPATH=$SRCDIR/trunk-cbc
+    ;;
     --openblas)
     OPENBLAS=1
     ;;
@@ -53,7 +57,9 @@ esac
 done
 
 echo 
-echo Using the following settings to configure CBC:
+echo Building CBC with the following settings:
+echo 
+echo THIRTYTWOBIT = ${THIRTYTWOBIT}
 echo SRCDIR = ${SRCDIR}
 echo BUILDDIR = ${BUILDDIR}
 echo CBCBUILDDIR = ${CBCBUILDDIR}
@@ -65,9 +71,14 @@ echo OPENBLAS_INC_PATH = ${OPENBLAS_INC_PATH}
 echo SHARED = ${SHARED}
 echo PARALLEL = ${PARALLEL}
 echo THREADSAFE = ${THREADSAFE}
+echo 
+
+cp -R $CBCORIGPATH $CBCCOPYPATH
 
 echo 
 echo Obtaining third party libs
+echo
+
 cd ${CBCCOPYPATH}/ThirdParty/Mumps
 ./get.Mumps
 cd ${CBCCOPYPATH}/ThirdParty/Metis
@@ -93,7 +104,7 @@ fi
 if [ $SHARED == 1 ] 
 then
 	CONFIGURATION=$"${CONFIGURATION}"'
-  --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-shared --disable-static \
+  --build=i686-w64-mingw32 --host=i686-w64-mingw32 --enable-shared --disable-static \
   --enable-dependency-linking lt_cv_deplibs_check_method=pass_all \
   --with-pic \'
 fi
@@ -114,15 +125,25 @@ then
   CXXDEFS="-DCBC_THREAD_SAFE -DCBC_NO_INTERRUPT -DHAVE_STRUCT_TIMESPEC" \'
 fi
 
+if [ $THIRTYTWOBIT == 1 ]
+then
+	CONFIGURATION=$"${CONFIGURATION}"'
+  LDFLAGS="-Wl,--large-address-aware" \'
+fi
+
 CONFIGURATION=$"${CONFIGURATION}"'
   '
 
 echo 
-echo Config invocation:
+echo Using configuration invocation:
+echo 
 echo "${CONFIGURATION}"
+echo 
 
 cd ${CBCCOPYPATH}
 
 eval "$CONFIGURATION"
 make -j 2
 make install
+
+cd $HOME
