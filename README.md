@@ -13,8 +13,10 @@ MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 Make sure compiler tools are installed:
 
     pacman -S --needed \
-      base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake unzip
-
+      base-devel \
+      mingw-w64-i686-toolchain mingw-w64-i686-cmake \
+      mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake \
+      unzip
 
 More information:
 
