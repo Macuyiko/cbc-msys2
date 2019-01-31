@@ -17,7 +17,7 @@ mkdir ${DEPLOYDIR}
 ./compile-openblas.sh ${SRCDIR} ${BUILDDIR} --32
 
 # Static CBC and jCbc
-./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --32 --nopar --threadsafe --openblas
+./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --32 --threadsafe --openblas
 ./compile-jcbc.sh ${SRCDIR} ${BUILDDIR} --32 --openblas
 
 # Move to deployment directory
