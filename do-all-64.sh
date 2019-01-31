@@ -8,6 +8,8 @@ SRCDIR=$1
 BUILDDIR=$2
 DEPLOYDIR=$HOME/$3
 
+rm -R ${BUILDDIR}
+mkdir ${BUILDDIR}
 rm -R ${DEPLOYDIR}
 mkdir ${DEPLOYDIR}
 
@@ -18,6 +20,8 @@ mkdir ${DEPLOYDIR}
 ./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --threadsafe --openblas
 ./compile-jcbc.sh ${SRCDIR} ${BUILDDIR} --openblas
 
+# Move to deployment directory
+cp ${HOME}/${BUILDDIR}/openblasbuild/bin/* ${DEPLOYDIR}
 cp ${HOME}/${BUILDDIR}/jcbcbuild/* ${DEPLOYDIR}
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/cbc.exe ${DEPLOYDIR}/cbc-static.exe
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/clp.exe ${DEPLOYDIR}/clp-static.exe
@@ -25,14 +29,19 @@ cp ${HOME}/${BUILDDIR}/cbcbuild/bin/clp.exe ${DEPLOYDIR}/clp-static.exe
 # Shared trunk-cbc
 ./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --threadsafe --shared --openblas --use-trunk
 
+# Move to deployment directory
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${DEPLOYDIR}
-cp ${HOME}/${BUILDDIR}/openblasbuild/bin/* ${DEPLOYDIR}
 
 echo 
-echo Done, here is the cygcheck output for the static CBC:
+echo Done, cygcheck output follows below:
 echo 
 
-cygcheck ${DEPLOYDIR}/cbc-static.exe
+cd $DEPLOYDIR
+python2 $HOME/check-arch.py ./jCbc.dll
+cygcheck ./jCbc.dll
+python2 $HOME/check-arch.py ./cbc-static.exe
+cygcheck ./cbc-static.exe
+cd $HOME
 
 echo
 echo Make sure to move the necessary DLLs to deployment directory

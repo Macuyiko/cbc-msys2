@@ -55,8 +55,6 @@ else
   BINARY=64'
 fi
 
-make clean
-
 echo 
 echo Using make invocation:
 echo 
