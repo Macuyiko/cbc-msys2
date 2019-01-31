@@ -103,10 +103,18 @@ fi
 
 if [ $SHARED == 1 ] 
 then
+if [ $THIRTYTWOBIT == 1 ]
+then
 	CONFIGURATION=$"${CONFIGURATION}"'
   --build=i686-w64-mingw32 --host=i686-w64-mingw32 --enable-shared --disable-static \
   --enable-dependency-linking lt_cv_deplibs_check_method=pass_all \
   --with-pic \'
+else
+	CONFIGURATION=$"${CONFIGURATION}"'
+  --build=x86_64-w64-mingw32 --host=x86_64-w64-mingw32 --enable-shared --disable-static \
+  --enable-dependency-linking lt_cv_deplibs_check_method=pass_all \
+  --with-pic \'
+fi
 fi
 
 if [ $OPENBLAS == 1 ] 

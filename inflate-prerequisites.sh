@@ -17,4 +17,4 @@ unzip $DOWNLOADDIR/cbc.zip -d $SRCDIR
 unzip $DOWNLOADDIR/jcbc.zip -d $SRCDIR
 unzip $DOWNLOADDIR/swigwin.zip -d $SRCDIR
 unzip $DOWNLOADDIR/openblas.zip -d $SRCDIR
-mv $DOWNLOADDIR/trunk-cbc $SRCDIR/trunk-cbc
+cp $DOWNLOADDIR/trunk-cbc $SRCDIR/trunk-cbc

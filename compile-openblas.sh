@@ -14,8 +14,7 @@ mkdir $BLASBUILDDIR
 
 THIRTYTWOBIT=0
 USE_OPENMP=1
-NUM_THREADS=8
-TARGET="SKYLAKE"
+NUM_THREADS=2
 
 for i in "$@"
 do
@@ -23,14 +22,8 @@ case $i in
     --32)
     THIRTYTWOBIT=1
     ;;
-	--without-openmp)
-    USE_OPENMP=0
-    ;;
 	--threads=*)
     NUM_THREADS="${i#*=}"
-    ;;
-    --target=*)
-    TARGET="${i#*=}"
     ;;
     *)
     # Ignored
@@ -42,9 +35,7 @@ echo
 echo Building OpenBlas with the following settings:
 echo 
 echo THIRTYTWOBIT = ${THIRTYTWOBIT}
-echo USE_OPENMP = ${USE_OPENMP}
 echo NUM_THREADS = ${NUM_THREADS}
-echo TARGET = ${TARGET}
 echo 
 
 cd $SRCDIR/OpenBLAS-*
@@ -52,8 +43,7 @@ cd $SRCDIR/OpenBLAS-*
 # Previous version required this fix:
 # sed -i 's/-DCR/-DCR=CR/g' ./driver/level3/Makefile
 
-MAKE=$'make TARGET='"${TARGET}"' \
-  USE_OPENMP='"${USE_OPENMP}"' \
+MAKE=$'make DYNAMIC_ARCH=1 \
   NUM_THREADS='"${NUM_THREADS}"' \'
 
 if [ $THIRTYTWOBIT == 1 ] 

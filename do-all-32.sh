@@ -1,32 +1,29 @@
 #!/bin/bash
 
-: ${1?"Usage: $0 <download dirname> <src dirname> <build dirname> <deploy dirname>"}
-: ${2?"Usage: $0 <download dirname> <src dirname> <build dirname> <deploy dirname>"}
-: ${3?"Usage: $0 <download dirname> <src dirname> <build dirname> <deploy dirname>"}
-: ${4?"Usage: $0 <download dirname> <src dirname> <build dirname> <deploy dirname> <deploy dirname>"}
+: ${1?"Usage: $0 <src dirname> <build dirname> <deploy dirname>"}
+: ${2?"Usage: $0 <src dirname> <build dirname> <deploy dirname>"}
+: ${3?"Usage: $0 <src dirname> <build dirname> <deploy dirname>"}
 
-DOWNLOADDIR=$1
-SRCDIR=$2
-BUILDDIR=$3
-DEPLOYDIR=$HOME/$4
+SRCDIR=$1
+BUILDDIR=$2
+DEPLOYDIR=$HOME/$3
 
 rm -R ${DEPLOYDIR}
 mkdir ${DEPLOYDIR}
 
-./download-prerequisites.sh ${DOWNLOADDIR}
-./inflate-prerequisites.sh ${DOWNLOADDIR} ${SRCDIR}
-./compile-openblas.sh --32
+# OpenBlas
+./compile-openblas.sh ${SRCDIR} ${BUILDDIR} --32
 
-# Static CBC
-./compile-cbc.sh src build --32 --threadsafe --openblas
-./compile-jcbc.sh src build --32 --openblas
+# Static CBC and jCbc
+./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --32 --threadsafe --openblas
+./compile-jcbc.sh ${SRCDIR} ${BUILDDIR} --32 --openblas
 
 cp ${HOME}/${BUILDDIR}/jcbcbuild/* ${DEPLOYDIR}
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/cbc.exe ${DEPLOYDIR}/cbc-static.exe
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/clp.exe ${DEPLOYDIR}/clp-static.exe
 
 # Shared trunk-cbc
-./compile-cbc.sh src build --threadsafe --shared --openblas --use-trunk
+./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --threadsafe --shared --openblas --use-trunk
 
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${DEPLOYDIR}
 cp ${HOME}/${BUILDDIR}/openblasbuild/bin/* ${DEPLOYDIR}
