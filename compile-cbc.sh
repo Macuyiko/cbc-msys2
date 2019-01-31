@@ -26,7 +26,7 @@ OPENBLAS_INC_PATH=$BUILDDIR/openblasbuild/include
 for i in "$@"
 do
 case $i in
-	--32)
+    --32)
     THIRTYTWOBIT=1
     ;;
     --use-trunk)
