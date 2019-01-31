@@ -22,7 +22,7 @@ case $i in
     --32)
     THIRTYTWOBIT=1
     ;;
-	--threads=*)
+    --threads=*)
     NUM_THREADS="${i#*=}"
     ;;
     *)
