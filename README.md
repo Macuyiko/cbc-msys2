@@ -7,7 +7,7 @@ MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 4. `compile-cbc.sh`: Compile CBC with or without OpenBLAS, in shared or static form. The former will produce DLLs
 5. `compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a statically compiled CBC
 
-`do-all-*.sh download src build deploydir` can be used to download all prerequisites, inflate them, compile OpenBLAS, compile CBC statically, compile jCBC, compile CBC shared libraries with CBC trunk. Assumes a Java 7 JDK present. Both 64 and 32 bit versions can be compiled (make sure to run under the correspondig MingW version)
+`do-all-*.sh <src> <build> <deploydir>` can be used to compile OpenBLAS, compile CBC statically, compile jCBC, compile CBC shared libraries with CBC trunk. Assumes a Java 7 JDK present. Both 64 and 32 bit versions can be compiled (**important:** make sure to run under the correspondig MingW version and to download and inflate the prequisites first to set up the source folder).
 
 Make sure compiler tools are installed:
 
