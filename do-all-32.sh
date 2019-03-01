@@ -26,8 +26,8 @@ cp ${HOME}/${BUILDDIR}/jcbcbuild/* ${DEPLOYDIR}
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/cbc.exe ${DEPLOYDIR}/cbc-static.exe
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/clp.exe ${DEPLOYDIR}/clp-static.exe
 
-# Shared trunk-cbc
-./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --32 --nopar --threadsafe --shared --openblas --use-trunk
+# Shared CBC
+./compile-cbc.sh ${SRCDIR} ${BUILDDIR} --32 --nopar --threadsafe --shared --openblas
 
 # Move to deployment directory
 cp ${HOME}/${BUILDDIR}/cbcbuild/bin/* ${DEPLOYDIR}
