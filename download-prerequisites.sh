@@ -13,7 +13,7 @@ echo 'Modify this script in case you want to change versions'
 echo 'Downloading trunk-cbc uses svnkit, modify the JAVA_HOME if needed'
 echo 
 
-wget https://www.coin-or.org/download/source/Cbc/Cbc-2.9.9.zip -O $DOWNLOADDIR/cbc.zip
+wget https://www.coin-or.org/download/source/Cbc/Cbc-2.10.0.zip -O $DOWNLOADDIR/cbc.zip
 wget https://github.com/JNICbc/jCbc/archive/master.zip -O $DOWNLOADDIR/jcbc.zip
 wget http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip -O $DOWNLOADDIR/swigwin.zip
 wget https://github.com/xianyi/OpenBLAS/archive/v0.3.5.zip -O $DOWNLOADDIR/openblas.zip
