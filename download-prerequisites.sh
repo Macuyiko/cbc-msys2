@@ -8,7 +8,7 @@ rm -R $DOWNLOADDIR
 mkdir $DOWNLOADDIR
 
 echo 
-echo 'Downloading prerequisites (CBC, trunk-cbc, jCbc, swigwin, OpenBLAS)'
+echo 'Downloading prerequisites (CBC, jCbc, swigwin, OpenBLAS)'
 echo 'Modify this script in case you want to change versions'
 echo 'Downloading trunk-cbc uses svnkit, modify the JAVA_HOME if needed'
 echo 
