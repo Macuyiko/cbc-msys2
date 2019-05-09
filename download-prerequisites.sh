@@ -15,11 +15,11 @@ echo
 
 wget https://www.coin-or.org/download/source/Cbc/Cbc-2.10.2.zip -O $DOWNLOADDIR/cbc.zip
 wget https://github.com/JNICbc/jCbc/archive/master.zip -O $DOWNLOADDIR/jcbc.zip
-wget http://prdownloads.sourceforge.net/swig/swigwin-3.0.12.zip -O $DOWNLOADDIR/swigwin.zip
+wget http://prdownloads.sourceforge.net/swig/swigwin-4.0.0.zip -O $DOWNLOADDIR/swigwin.zip
 wget https://github.com/xianyi/OpenBLAS/archive/v0.3.6.zip -O $DOWNLOADDIR/openblas.zip
 
 # svn doesn't work quite right on MSYS2, so use svnkit instead
-wget https://www.svnkit.com/org.tmatesoft.svn_1.9.3.standalone.zip -O $DOWNLOADDIR/svnkit.zip
+wget https://www.svnkit.com/org.tmatesoft.svn_1.10.0.standalone.zip -O $DOWNLOADDIR/svnkit.zip
 unzip $DOWNLOADDIR/svnkit.zip -d $DOWNLOADDIR
 export JAVA_HOME="C:/Program Files/Java/jdk1.7.0_80"
 cd $DOWNLOADDIR
