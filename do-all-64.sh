@@ -8,8 +8,8 @@ SRCDIR=$1
 BUILDDIR=$2
 DEPLOYDIR=$HOME/$3
 
-rm -R ${BUILDDIR}
-mkdir ${BUILDDIR}
+rm -R ${HOME}/${BUILDDIR}
+mkdir ${HOME}/${BUILDDIR}
 rm -R ${DEPLOYDIR}
 mkdir ${DEPLOYDIR}
 
