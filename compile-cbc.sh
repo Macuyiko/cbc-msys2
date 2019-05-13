@@ -3,8 +3,9 @@
 : ${1?"Usage: $0 <src dirname> <build dirname> <options>"}
 : ${2?"Usage: $0 <src dirname> <build dirname> <options>"}
 
-SRCDIR=$HOME/$1
-BUILDDIR=$HOME/$2
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SRCDIR=$1
+BUILDDIR=$2
 
 CBCCOPYPATH=$BUILDDIR/cbcsrc
 CBCBUILDDIR=$BUILDDIR/cbcbuild
@@ -154,4 +155,5 @@ eval "$CONFIGURATION"
 make -j 2
 make install
 
-cd $HOME
+cd $SCRIPTPATH
+

@@ -3,8 +3,9 @@
 : ${1?"Usage: $0 <src dirname> <build dirname> <options>"}
 : ${2?"Usage: $0 <src dirname> <build dirname> <options>"}
 
-SRCDIR=$HOME/$1
-BUILDDIR=$HOME/$2
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SRCDIR=$1
+BUILDDIR=$2
 
 BLASBUILDDIR=$BUILDDIR/openblasbuild
 
@@ -64,4 +65,4 @@ echo
 eval "$MAKE"
 make PREFIX=$BLASBUILDDIR install
 
-cd $HOME
+cd $SCRIPTPATH

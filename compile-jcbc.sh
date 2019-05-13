@@ -3,8 +3,9 @@
 : ${1?"Usage: $0 <src dirname> <build dirname> <options>"}
 : ${2?"Usage: $0 <src dirname> <build dirname> <options>"}
 
-SRCDIR=$HOME/$1
-BUILDDIR=$HOME/$2
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+SRCDIR=$1
+BUILDDIR=$2
 
 JCBCDIR=$SRCDIR/jCbc-master
 SWIGDIR=$SRCDIR/swigwin-*
@@ -133,5 +134,4 @@ eval "$SWIGMAKE3"
 
 cp ${JCBCDIR}/jCbc.dll ${SWIGBUILDDIR}/jCbc.dll
 
-cd $HOME
-
+cd $SCRIPTPATH

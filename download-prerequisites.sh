@@ -2,7 +2,8 @@
 
 : ${1?"Usage: $0 <download dirname>"}
 
-DOWNLOADDIR=$HOME/$1
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DOWNLOADDIR=$1
 
 rm -R $DOWNLOADDIR
 mkdir $DOWNLOADDIR
@@ -26,4 +27,4 @@ cd $DOWNLOADDIR
 $DOWNLOADDIR/svnkit-*/bin/jsvn co https://projects.coin-or.org/svn/Cbc/trunk/ -r HEAD
 mv $DOWNLOADDIR/trunk $DOWNLOADDIR/trunk-cbc
 
-cd $HOME
+cd $SCRIPTPATH
