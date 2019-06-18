@@ -1,7 +1,7 @@
 # cbc-msys2
 MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 
-1. `download-prerequisites.sh`: Download CBC, CBC trunk, swigwin, and OpenBLAS (modify this script to change versions)
+1. `download-prerequisites.sh`: Downloads CBC, CBC trunk, swigwin, and OpenBLAS (modify this script to change versions)
 2. `inflate-prerequisites.sh`: Extract and move prerequisites to separate source folder
 3. `compile-openblas`: Compile OpenBLAS
 4. `compile-cbc.sh`: Compile CBC (trunk or release) with or without OpenBLAS, in shared or static form. The former will produce DLLs
@@ -15,7 +15,7 @@ Make sure compiler tools are installed:
       base-devel \
       mingw-w64-i686-toolchain mingw-w64-i686-cmake \
       mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake \
-      unzip
+      unzip svn
 
 More information:
 
