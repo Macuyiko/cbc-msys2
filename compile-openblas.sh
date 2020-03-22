@@ -45,7 +45,8 @@ cd $SRCDIR/OpenBLAS-*
 # sed -i 's/-DCR/-DCR=CR/g' ./driver/level3/Makefile
 
 MAKE=$'make DYNAMIC_ARCH=1 \
-  NUM_THREADS='"${NUM_THREADS}"' \'
+  NUM_THREADS='"${NUM_THREADS}"' \
+  USE_THREAD=1 \'
 
 if [ $THIRTYTWOBIT == 1 ] 
 then
@@ -62,7 +63,10 @@ echo
 echo "${MAKE}"
 echo 
 
+make clean
+
 eval "$MAKE"
-make PREFIX=$BLASBUILDDIR install
+
+make PREFIX=$BLASBUILDDIR install USE_THREAD=1 NUM_THREADS=$NUM_THREADS
 
 cd $SCRIPTPATH
