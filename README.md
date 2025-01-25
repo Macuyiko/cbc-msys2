@@ -2,7 +2,7 @@
 MSYS2 shell scripts to compile COIN-OR CBC for Windows platforms
 
 1. `download-prerequisites.sh`: Downloads CBC, CBC trunk, swigwin, and OpenBLAS (modify this script to change versions)
-2. `inflate-prerequisites.sh`: Extract and move prerequisites to separate source folder
+2. `inflate-prerequisites.sh`: Extract and move prerequisites to a separate source folder
 3. `compile-openblas`: Compile OpenBLAS
 4. `compile-cbc.sh`: Compile CBC (trunk or release) with or without OpenBLAS, in shared or static form. The former will produce DLLs
 5. `compile-jcbc.sh`: Compile jCbc with or without OpenBLAS, needs a statically compiled CBC
@@ -20,6 +20,6 @@ Make sure compiler tools are installed:
 More information:
 
 - https://github.com/xianyi/OpenBLAS/wiki/Installation-Guide: OpenBLAS installation guide
-- https://github.com/JNICbc/jCbc: for jCbc installation guide. Note that the manual is outdated and uses older MinGW distribution
+- https://github.com/JNICbc/jCbc: jCbc installation guide. Note that the manual is outdated and uses an older MinGW distribution
 - https://github.com/nativelibs4java/JNAerator: to generate a JNA class to access the CBC C interface, as an alternative to jCbc. This requires a shared CBC compilation
 - https://github.com/JuliaOpt/CbcBuilder/blob/master/build_tarballs.jl: for having the only clear instruction set on how to get CBC to compile a DLL
